@@ -14,22 +14,41 @@
 <body>
 <div>
 <h4> Current project</h4>
-<table>
+    <table>
     <thead>
-    <tr>
+        <tr>
         <th>Project Name</th>
         <th>Project Stage</th>
-    </tr>
+        </tr>
     </thead>
-</table>
-<tbody>
-<tr th:each="aProject : ${projects}">
-    <td>
-        <td th:text="${aProject.name}">
-        <td th:text="${aProject.stage}">
-    </td>
-</tr>
-</tbody>
+    <tbody>
+
+        <tr th:each="aProject : ${projectList}">
+        <td th:text="${aProject.name}"></td>
+        <td th:text="${aProject.stage}"></td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+<div>
+<h4>Current Employees</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aEmployee : ${employeeList}">
+            <td th:text="${aEmployee.firstName}"></td>
+            <td th:text="${aEmployee.lastName}"></td>
+            <td th:text="${aEmployee.email}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
