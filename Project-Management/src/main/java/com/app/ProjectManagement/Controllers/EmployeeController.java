@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    @Autowired
+    @Autowired  //injects instance of employee repo
     private EmployeeRepository employeeRepository;
 
 
@@ -31,7 +31,7 @@ public class EmployeeController {
         employeeRepository.save(employee);
 
         //this will redirect you to the project management page
-        return "redirect:/projects/new";
+        return "redirect:/employee/new";
     }
 
 
