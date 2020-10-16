@@ -21,7 +21,7 @@ public class EmployeeController {
     public String displayEmployeeForm(Model model)
     {
         Employee newEmployee=new Employee();
-        model.addAttribute("employee",newEmployee); //this connects the employee model and our new instance of em
+        model.addAttribute("employee",newEmployee); //this allows us to link a key with our model for thymeleaf to reference
         return "new-employee";  //html page for thymeleaf
     }
     @PostMapping("/save")
