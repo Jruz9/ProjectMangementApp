@@ -22,12 +22,12 @@ public class HomeController {
     @GetMapping("/")
     public String displayHome(Model model)
     {
-        //query datavae for projects
+        //query database for projects
         List<Project> projects= projectRepository.findAll();
         model.addAttribute("projectList",projects);
     //query database for employees
         List<Employee>employees=employeeRepository.findAll();
         model.addAttribute("employeeList",employees);
-        return "home";
+        return "main/home";
     }
 }

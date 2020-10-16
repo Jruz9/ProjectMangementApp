@@ -22,7 +22,7 @@ public class EmployeeController {
     {
         Employee newEmployee=new Employee();
         model.addAttribute("employee",newEmployee); //this allows us to link a key with our model for thymeleaf to reference
-        return "new-employee";  //html page for thymeleaf
+        return "employees/new-employee";  //html page for thymeleaf
     }
     @PostMapping("/save")
     public String createEmployeeForm(Model model, Employee employee)

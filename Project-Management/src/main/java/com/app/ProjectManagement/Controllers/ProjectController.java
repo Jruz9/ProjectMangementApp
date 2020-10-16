@@ -21,7 +21,7 @@ public class ProjectController {
     {
         Project aProject=new Project();
         model.addAttribute("project",aProject);
-        return "new-project";   //thymeLeaf is smart enough to know you are talking about the html file
+        return "projects/new-project";   //thymeLeaf is smart enough to know you are talking about the html file
     }
     @PostMapping("/save")
     public String createProjectForm(Project project,Model model)
