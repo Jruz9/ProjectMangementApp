@@ -7,7 +7,7 @@ import java.util.List;
 @Entity
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectId;
     private String name;
     private String stage; // Not started, completed, in progress

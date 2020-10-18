@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //identity will rely on a auto incremented database, batch is gone its find for now.
     private Long employeeId;
     private String firstName;
     private String lastName;
