@@ -6,28 +6,25 @@
 <body>
 <nav th:replace="layouts:: navbar"></nav>
 
-<div class="newEmployee">
-    <h4>Create a new employee</h4>
-    <form action="/employee/new" th:object="${employee}" method="post">
-
-        <button type="submit" class="btn btn-primary">New Employee</button>
-
-
-    </form>
+<div class="container">
+    <h3>Employee Directory</h3>
+    <hr>
+    <a th:href="@{/employee/new}" class="btn btn-primary btn-sm mb-3">>Add employee</a>
 </div>
+<br>
 
 <div class="employeeTable">
     <h4>Current Employees</h4>
-    <table class="table table-striped table-dark">
-        <thead>
+    <table class="table table-bordered table-striped">
+        <thead class="thread-dark">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email Address</th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="aEmployee : ${employeeList}">
+        <tr th:each="aEmployee : ${employees}">
             <td th:text="${aEmployee.firstName}"></td>
             <td th:text="${aEmployee.lastName}"></td>
             <td th:text="${aEmployee.email}"></td>

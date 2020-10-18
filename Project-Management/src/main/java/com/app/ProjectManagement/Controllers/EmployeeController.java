@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -16,6 +18,12 @@ public class EmployeeController {
     @Autowired  //injects instance of employee repo
     private EmployeeRepository employeeRepository;
 
+    @GetMapping
+    public String displayEmployees(Model model){
+        List<Employee>employeeList=employeeRepository.findAll();
+        model.addAttribute("employees",employeeList);
+        return "employees/employees-home";
+    }
 
     @GetMapping("/new")
     public String displayEmployeeForm(Model model)
