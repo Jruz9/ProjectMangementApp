@@ -1,6 +1,7 @@
 package com.app.ProjectManagement.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -68,5 +69,12 @@ public class Project {
 
     public void setEmployeeList(List<Employee> employeeList) {
         this.employeeList = employeeList;
+    }
+    //convince method:
+    public void addEmployee(Employee emp) {
+        if (employeeList==null){
+            employeeList= new ArrayList<>();
+        }
+        employeeList.add(emp);
     }
 }
