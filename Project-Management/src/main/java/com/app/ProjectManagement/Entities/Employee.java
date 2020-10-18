@@ -1,6 +1,7 @@
 package com.app.ProjectManagement.Entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -13,12 +14,12 @@ public class Employee {
 
 
     //remove is not included because it would remove the children  as well.
-    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
+    @ManyToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST},
         fetch = FetchType.LAZY)//if coming happens to the parent all the children are affected (delete project and employees will be deleted as well
     //Fetch eager is  slow and lazy is fast.eager gets the parent and child while lazy  only gets the parent.lazy loading is a deisgn pattern for performance improvements
 
-    @JoinColumn(name ="project_id")//foreign key that is where the relationship is built.
-    private Project project;
+    @JoinTable(name = "project_employee",joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> projects;
 
     public Employee() {
     }
@@ -62,11 +63,11 @@ public class Employee {
         this.email = email;
     }
 
-    public Project getProject() {
-        return project;
+    public List<Project> getProjects() {
+        return projects;
     }
 
-    public void setProject(Project project) {
-        this.project = project;
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
     }
 }

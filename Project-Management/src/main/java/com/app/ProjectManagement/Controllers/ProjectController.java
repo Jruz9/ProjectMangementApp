@@ -41,20 +41,14 @@ public class ProjectController {
         return "projects/new-project";   //thymeLeaf is smart enough to know you are talking about the html file
     }
     @PostMapping("/save")
-    public String createProjectForm(Project project, @RequestParam List<Long> employeeList, Model model)//employee list is not random it is the list name of the varriable in the projects class
+    public String createProjectForm(Project project, Model model)//employee list is not random it is the list name of the varriable in the projects class
     {
         //this should handle saving to the database...
         proRepo.save(project);
 
-        Iterable<Employee> chosenEmployee=employeeRepository.findAllById(employeeList);
-        for(Employee emp:chosenEmployee)
-        {
-            emp.setProject(project);
-            employeeRepository.save(emp);
-        }
 
         //use a redirect to prevent duplicate submissions
-        return  "redirect:/projects/new";
+        return  "redirect:/projects";
     }
 
 }
