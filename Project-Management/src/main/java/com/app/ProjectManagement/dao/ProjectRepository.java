@@ -9,4 +9,8 @@ public interface ProjectRepository extends CrudRepository<Project,Long> {
 
     @Override
     public List<Project> findAll();
+
+    //show counts of project status complete incomplete etc...
+
+    
 }

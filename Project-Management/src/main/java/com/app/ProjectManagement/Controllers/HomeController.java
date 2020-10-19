@@ -4,6 +4,7 @@ import com.app.ProjectManagement.Entities.Employee;
 import com.app.ProjectManagement.Entities.Project;
 import com.app.ProjectManagement.dao.EmployeeRepository;
 import com.app.ProjectManagement.dao.ProjectRepository;
+import com.app.ProjectManagement.dto.EmployeeProject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,8 +27,8 @@ public class HomeController {
         List<Project> projects= projectRepository.findAll();
         model.addAttribute("projectList",projects);
         //query database for employees
-        List<Employee>employees=employeeRepository.findAll();
-        model.addAttribute("employeeList",employees);
+        List<EmployeeProject> employeeProjectCnt=employeeRepository.employeeProjects();
+        model.addAttribute("employeeListProjectCnt",employeeProjectCnt);
         return "main/home";
     }
 }
