@@ -37,6 +37,7 @@ public class HomeController {
         //lets convert obbject into a json structure for use in javascript
         ObjectMapper objectMapper=new ObjectMapper();
         String jsonString=objectMapper.writeValueAsString(projectData);
+
         model.addAttribute("ProjectStatusCnt",jsonString);
 
         //query database for employees
