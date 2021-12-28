@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
-    @Value("${version}")
+    @Value(value = "${version:default value}") //replaces the version to let spring profiles run
     private  String ver;
     @Autowired
     ProjectRepository projectRepository;
