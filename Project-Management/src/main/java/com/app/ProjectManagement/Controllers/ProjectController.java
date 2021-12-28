@@ -4,6 +4,8 @@ import com.app.ProjectManagement.Entities.Employee;
 import com.app.ProjectManagement.Entities.Project;
 import com.app.ProjectManagement.dao.EmployeeRepository;
 import com.app.ProjectManagement.dao.ProjectRepository;
+import com.app.ProjectManagement.services.EmployeeService;
+import com.app.ProjectManagement.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,14 +21,14 @@ import java.util.List;
 public class ProjectController {
 
     @Autowired  //gives responsibility to the spring container to  inject bean into it
-    ProjectRepository proRepo;
+    ProjectService proService;
 
     @Autowired
-    EmployeeRepository employeeRepository;
+    EmployeeService empService;
 
     @GetMapping
     public String displayProjects(Model model){
-        List<Project> projectList=proRepo.findAll();
+        List<Project> projectList=proService.getAll();
         model.addAttribute("projects",projectList);
         return "projects/project-page";
     }
@@ -35,7 +37,7 @@ public class ProjectController {
     public String displayProjectForm(Model model)
     {
         Project aProject=new Project();
-        List<Employee> employees=employeeRepository.findAll();
+        List<Employee> employees=empService.getAll();
         model.addAttribute("project",aProject);
         model.addAttribute("allEmployees",employees);
         return "projects/new-project";   //thymeLeaf is smart enough to know you are talking about the html file
@@ -44,7 +46,7 @@ public class ProjectController {
     public String createProjectForm(Project project, Model model)//employee list is not random it is the list name of the varriable in the projects class
     {
         //this should handle saving to the database...
-        proRepo.save(project);
+        proService.save(project);
 
 
         //use a redirect to prevent duplicate submissions

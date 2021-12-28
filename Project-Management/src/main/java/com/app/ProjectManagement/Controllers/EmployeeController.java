@@ -2,6 +2,7 @@ package com.app.ProjectManagement.Controllers;
 
 import com.app.ProjectManagement.Entities.Employee;
 import com.app.ProjectManagement.dao.EmployeeRepository;
+import com.app.ProjectManagement.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,12 +16,15 @@ import java.util.List;
 @RequestMapping("/employee")
 public class EmployeeController {
 
-    @Autowired  //injects instance of employee repo
-    private EmployeeRepository employeeRepository;
+//    @Autowired  //injects instance of employee repo
+//    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    EmployeeService empService;
 
     @GetMapping
     public String displayEmployees(Model model){
-        List<Employee>employeeList=employeeRepository.findAll();
+        List<Employee>employeeList=empService.getAll();
         model.addAttribute("employees",employeeList);
         return "employees/employees-home";
     }
@@ -36,7 +40,7 @@ public class EmployeeController {
     public String createEmployeeForm(Model model, Employee employee)
     {
         //This handles saving the employee into the  database
-        employeeRepository.save(employee);
+        empService.save(employee);
 
         //this will redirect you to the project management page
         return "redirect:/employee/new";
