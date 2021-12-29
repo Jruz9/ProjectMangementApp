@@ -8,11 +8,10 @@
 <nav th:replace="layouts :: navbar"></nav>
 
 <div class="employeeContainer">
-    <form action="/employee/save" th:object="${employee}" method="post">
+    <form th:action="@{/employee/save}" th:object="${employee}" method="post">
         <input type="text" placeholder="First Name" th:field="${employee.firstName}">
         <input type="text" placeholder="Last Name"th:field="${employee.lastName}">
         <input type="text" placeholder="email" th:field="${employee.email}">
-
         <button type="submit">Add Employee</button>
     </form>
 
