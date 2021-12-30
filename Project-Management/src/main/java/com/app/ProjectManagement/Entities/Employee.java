@@ -3,6 +3,9 @@ package com.app.ProjectManagement.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -10,9 +13,21 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_seq") //identity will rely on a auto incremented database, batch is gone its find for now.
    // @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "employee_seq")
+
+
     private Long employeeId;
+
+    @NotNull
+    @Size(min=2,max=50)
     private String firstName;
+
+    @NotNull
+    @Size(min=1,max=50)
     private String lastName;
+
+    @NotNull
+    @Email
+    @Column(unique = true,nullable = false)
     private String email;
 
 
