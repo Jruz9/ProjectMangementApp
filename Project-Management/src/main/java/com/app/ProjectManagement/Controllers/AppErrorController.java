@@ -25,7 +25,7 @@ public class AppErrorController implements ErrorController {
                 return "errorpages/error-500";
             }
             else if(statusCode== HttpStatus.FORBIDDEN.value()){
-                //fobiddin
+                //forbidden
                 return "errorpages/error-403";
             }
         }

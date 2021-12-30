@@ -16,7 +16,7 @@ public class EmployeeService {
         return empRepo.save(employee);
     }
     public List<Employee>getAll(){
-        return empRepo.findAll();
+        return (List<Employee>) empRepo.findAll();
     }
 
     public List<EmployeeProject> employeeProjects(){

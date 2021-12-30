@@ -1,5 +1,7 @@
 package com.app.ProjectManagement.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -20,6 +22,8 @@ public class Employee {
     //Fetch eager is  slow and lazy is fast.eager gets the parent and child while lazy  only gets the parent.lazy loading is a deisgn pattern for performance improvements
 
     @JoinTable(name = "project_employee",joinColumns = @JoinColumn(name = "employee_id"),inverseJoinColumns = @JoinColumn(name = "project_id"))
+
+    @JsonIgnore
     private List<Project> projects;
 
     public Employee() {

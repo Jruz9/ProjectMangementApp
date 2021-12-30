@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee,Long> {
 
-    @Override
-    public List<Employee> findAll();
+//    @Override
+//    public List<Employee> findAll();
 
     @Query(nativeQuery = true,value = "select e.first_name as firstName , e.last_name as lastName," +
             "COUNT (pe.EMPLOYEE_ID) as projectCount  " +

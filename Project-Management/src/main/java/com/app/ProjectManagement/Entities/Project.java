@@ -1,5 +1,7 @@
 package com.app.ProjectManagement.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class Project {
     @JoinTable(name = "project_employee",
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id"))
+
+    @JsonIgnore
     private List<Employee> employeeList;
 
     public Project() {  //default constructor
@@ -63,6 +67,7 @@ public class Project {
     public void setDescription(String description) {
         this.description = description;
     }
+
 
     public List<Employee> getEmployeeList() {
         return employeeList;
