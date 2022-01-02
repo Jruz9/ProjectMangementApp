@@ -1,5 +1,6 @@
 package com.app.ProjectManagement.Entities;
 
+import com.app.ProjectManagement.validators.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -27,7 +28,7 @@ public class Employee {
 
     @NotNull
     @Email
-    @Column(unique = true,nullable = false)
+    @UniqueValue //not clientside validation:
     private String email;
 
 
