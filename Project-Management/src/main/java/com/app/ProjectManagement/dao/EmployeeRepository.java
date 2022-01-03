@@ -4,13 +4,14 @@ import com.app.ProjectManagement.Entities.Employee;
 import com.app.ProjectManagement.dto.EmployeeProject;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
 @Repository
-public interface EmployeeRepository extends CrudRepository<Employee,Long> {
+public interface EmployeeRepository extends PagingAndSortingRepository<Employee,Long> {
 
 //    @Override
 //    public List<Employee> findAll();

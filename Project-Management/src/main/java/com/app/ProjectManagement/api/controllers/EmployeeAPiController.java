@@ -4,6 +4,8 @@ import com.app.ProjectManagement.Entities.Employee;
 import com.app.ProjectManagement.dao.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -72,4 +74,13 @@ public class EmployeeAPiController {
         }
     }
 
+
+    //add pagination to our api
+    @GetMapping(params = {"page","size"})
+    @ResponseStatus(HttpStatus.OK)
+    public Iterable<Employee> findPaginatedEmployee(@RequestParam("page") int page,
+                                                    @RequestParam("size")int size){
+        Pageable pageAndSize= PageRequest.of(page,size);
+        return empRepo.findAll(pageAndSize);
+    }
 }
