@@ -19,6 +19,7 @@
         <tr>
             <th>Project Name</th>
             <th>Project Stage</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,16 @@
         <tr th:each="aProject : ${projects}">
             <td th:text="${aProject.name}"></td>
             <td th:text="${aProject.stage}"></td>
+
+            <a th:href="@{/projects/update(id=${aProject.projectId})}"
+               class ="btn btn-info btn-sm">
+               update
+               </a>
+            <a th:href="@{/projects/delete(id=${aProject.projectId})}"
+               class="btn btn-danger btn-sm"
+               onclick="if (!(confirm('Are you sure you want to delete this employee ?'))) return false">
+                delete
+                </a>
         </tr>
         </tbody>
     </table>

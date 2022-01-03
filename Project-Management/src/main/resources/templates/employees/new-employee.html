@@ -9,7 +9,13 @@
 
 <div class="employeeContainer">
     <form th:action="@{/employee/save}" th:object="${employee}" method="post">
-        <input type="text" placeholder="First Name" th:field="${employee.firstName}">
+        <div class="form-group row">
+            <input type="hidden" th:field="${employee.employeeId}"/>
+            <!-- This will be used to bind the employee that was clicked on, USED FOR UPDATING --->
+
+
+            <input type="text" placeholder="First Name" th:field="${employee.firstName}">
+        </div>
         <input type="text" placeholder="Last Name"th:field="${employee.lastName}">
         <input type="text" placeholder="email" th:field="${employee.email}">
         <button type="submit">Add Employee</button>

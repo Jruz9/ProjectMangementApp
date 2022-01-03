@@ -9,7 +9,11 @@
 	<nav th:replace="layouts :: navbar"></nav>
 	<div class="container">
 		<form th:action="@{/projects/save}" th:object="${project}" method="POST">
-		
+		<div class="form-group row">
+			<input type="hidden" th:field="${project.projectId}">
+			<!-- This will be used to bind the project that was clicked on, USED FOR UPDATING --->
+		</div>
+
 		<input type="text" placeholder="Project Name" th:field="${project.name}">
 		
 		<select th:field="${project.stage}">

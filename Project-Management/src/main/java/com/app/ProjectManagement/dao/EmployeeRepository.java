@@ -5,12 +5,13 @@ import com.app.ProjectManagement.dto.EmployeeProject;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 
 import java.util.List;
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "apiemployees",path = "apiemployees")
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee,Long> {
 
 //    @Override
@@ -23,6 +24,8 @@ public interface EmployeeRepository extends PagingAndSortingRepository<Employee,
     public List<EmployeeProject> employeeProjects();
 
     public  Employee findByEmail(String value); //give name we dont have to specifiy to much information using the by format
+
+    Employee findByEmployeeId(long theid);
 
 //    public Employee findEmployeeByEmployeeId(long id);
 }
