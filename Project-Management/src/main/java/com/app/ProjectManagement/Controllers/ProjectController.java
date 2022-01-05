@@ -9,11 +9,13 @@ import com.app.ProjectManagement.services.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -43,8 +45,12 @@ public class ProjectController {
         return "projects/new-project";   //thymeLeaf is smart enough to know you are talking about the html file
     }
     @PostMapping("/save")
-    public String createProjectForm(Project project, Model model)//employee list is not random it is the list name of the varriable in the projects class
+    public String createProjectForm(@Valid Project project, Model model, Errors errors)//employee list is not random it is the list name of the varriable in the projects class
     {
+        //checks for errors in the front of our application:
+        if(errors.hasErrors()){
+            return "projects/new-project";
+        }
         //this should handle saving to the database...
         proService.save(project);
 

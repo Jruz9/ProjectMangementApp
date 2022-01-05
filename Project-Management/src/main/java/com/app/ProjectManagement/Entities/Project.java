@@ -3,6 +3,7 @@ package com.app.ProjectManagement.Entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,8 +13,14 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "project_seq")
     //@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "project_seq")
     private Long projectId;
+    @NotBlank(message = "Enter the name of your project.")
+
     private String name;
+    @NotBlank(message = "*Must pick 1 stage from selection.")
+
     private String stage; // Not started, completed, in progress
+
+    @NotBlank(message = "*Enter a description of your project")
     private String description;
 
 
