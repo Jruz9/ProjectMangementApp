@@ -9,16 +9,36 @@
 
 <div class="employeeContainer">
     <form th:action="@{/employee/save}" th:object="${employee}" method="post">
-        <div class="form-group row">
+
             <input type="hidden" th:field="${employee.employeeId}"/>
             <!-- This will be used to bind the employee that was clicked on, USED FOR UPDATING --->
 
-
+        <div class="form-group row">
             <input type="text" placeholder="First Name" th:field="${employee.firstName}">
+            <span style="color:red" th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="${employee.firstName}">
+
+            </span>
+
         </div>
-        <input type="text" placeholder="Last Name"th:field="${employee.lastName}">
-        <input type="text" placeholder="email" th:field="${employee.email}">
-        <button type="submit">Add Employee</button>
+
+        <div class="form-group row">
+            <input type="text" placeholder="Last Name"th:field="${employee.lastName}">
+            <span style="color:red"  th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="${employee.lastName}">
+
+            </span>
+        </div>
+
+        <div class="form-group row">
+            <input type="text" placeholder="email" th:field="${employee.email}">
+            <span style="color:red" th:if="${#fields.hasErrors('email')}"
+                  th:errors="${employee.email}">
+
+            </span>
+        </div>
+
+        <button class="btn btn-info col-2" type="submit">Add Employee</button>
     </form>
 
 
