@@ -1,5 +1,5 @@
 # ProjectFlow
-![projectflow](/projectflow.png)
+![projectflow](projectflow.png)
 ## Description
 ProjectFlow is a project management application that allows admins to assign work to other people in your team and receive insight on project management.
 You can put a job or activity assign people you want collaboration to be involved.
